@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Newsreader } from "next/font/google";
 import "./globals.css";
 
+const sansFont = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const serifFont = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
-  title: "CardSmart India — Credit Card Recommender, LTF Cards & Spend Analyzer",
+  title: "CardSmart India — Intelligent Credit Card Recommender & LTF Directory",
   description:
-    "Compare and analyse all credit cards in India. Find Lifetime Free (LTF) cards, ways to make cards LTF via spend waivers and alumni programs, and top cards for Travel, Fuel, and Shopping.",
+    "An editorial intelligence platform for Indian credit cards. Discover lifetime-free pathways, upgrade routes for delisted cards, and personalized recommendations tailored to your banking relationships.",
 };
 
 export default function RootLayout({
@@ -13,10 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased dark" suppressHydrationWarning>
-      <body className="min-h-full flex flex-col font-sans transition-colors duration-200">
+    <html lang="en" className={`h-full antialiased dark ${sansFont.variable} ${serifFont.variable}`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col font-sans bg-[var(--background)] text-[var(--foreground)] transition-colors duration-200">
         {children}
       </body>
     </html>
   );
 }
+

@@ -168,3 +168,33 @@ export interface CardRecommendationResult {
   isExistingCard: boolean;
 }
 
+export interface DirectoryCard {
+  id: string;
+  name: string;
+  bank: string;
+  issuerCategoryId: string;
+  network: string;
+  category: string;
+  joiningFee: number;
+  annualFee: number;
+  annualFeeWaiverSpend: number | null;
+  ltfStatus: 'LTF' | 'CONDITIONAL_LTF' | 'PAID';
+  status: 'ACTIVE' | 'DEVALUED' | 'DISCONTINUED' | 'MIGRATED';
+  officialProductUrl: string;
+  mitcUrl: string;
+  keyHighlights: string;
+  devaluationWatch?: string;
+  inRecommenderEngine: boolean;
+  lastPolled: string;
+}
+
+export interface CatalogueSource {
+  id: string;
+  name: string;
+  category: string;
+  catalogueUrl: string;
+  mitcUrl: string;
+  noticeUrl?: string;
+  expectedCards: string[];
+}
+

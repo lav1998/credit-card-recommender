@@ -1,0 +1,432 @@
+[
+  {
+    "id": "hdfc-bank",
+    "name": "HDFC Bank",
+    "category": "Top 5 Market Leader",
+    "catalogueUrl": "https://www.hdfcbank.com/personal/pay/cards/credit-cards",
+    "mitcUrl": "https://www.hdfcbank.com/personal/useful-links/rates-and-fees/credit-cards",
+    "noticeUrl": "https://www.hdfcbank.com/personal/resources/important-information",
+    "expectedCards": [
+      "Infinia Metal", "Diners Club Black Metal", "Regalia Gold", "Millennia", 
+      "Tata Neu Infinity", "Tata Neu Plus", "Swiggy HDFC", "Pixel Play", "Pixel Go",
+      "Marriott Bonvoy", "IndianOil HDFC", "MoneyBack+", "Freedom", "Shoppers Stop HDFC"
+    ]
+  },
+  {
+    "id": "sbi-card",
+    "name": "SBI Card",
+    "category": "Top 5 Market Leader",
+    "catalogueUrl": "https://www.sbicard.com/en/personal/credit-cards.page",
+    "mitcUrl": "https://www.sbicard.com/en/most-important-terms-and-conditions.page",
+    "noticeUrl": "https://www.sbicard.com/en/personal/credit-cards/important-information.page",
+    "expectedCards": [
+      "Cashback SBI Card", "SimplyCLICK", "SimplySAVE", "Aurum", "SBI Card Elite",
+      "SBI Card Prime", "BPCL Octane", "Air India SBI Signature", "IRCTC RuPay Premier",
+      "Reliance SBI Card PRIME", "Titan SBI Card", "Miles Elite", "Miles Prime", "SBI Card Pulse"
+    ]
+  },
+  {
+    "id": "icici-bank",
+    "name": "ICICI Bank",
+    "category": "Top 5 Market Leader",
+    "catalogueUrl": "https://www.icicibank.com/personal-banking/cards/credit-cards",
+    "mitcUrl": "https://www.icicibank.com/personal-banking/cards/credit-cards/most-important-terms-and-conditions",
+    "noticeUrl": "https://www.icicibank.com/personal-banking/cards/credit-cards/service-charges",
+    "expectedCards": [
+      "1838 Reserve", "Amazon Pay ICICI", "Emeralde Private Metal", "Emeralde", "Sapphiro", "Rubyx",
+      "Coral", "Coral RuPay", "Platinum Chip", "MakeMyTrip ICICI Signature", "Adani One ICICI Signature"
+    ]
+  },
+  {
+    "id": "axis-bank",
+    "name": "Axis Bank",
+    "category": "Top 5 Market Leader",
+    "catalogueUrl": "https://www.axisbank.com/retail/cards/credit-card",
+    "mitcUrl": "https://www.axisbank.com/retail/cards/credit-card/useful-links/most-important-terms-and-conditions",
+    "noticeUrl": "https://www.axisbank.com/retail/cards/credit-card/important-information",
+    "expectedCards": [
+      "Flipkart Axis Bank", "Axis Atlas", "Magnus", "Magnus Burgundy", "Airtel Axis Bank",
+      "Axis ACE", "Axis Neo", "Axis My Zone", "Axis Select", "Axis Privilege", "Axis Rewards",
+      "IndianOil Axis Bank", "Axis Horizon", "Axis Olympus", "Samsung Axis Bank Infinite"
+    ]
+  },
+  {
+    "id": "kotak-bank",
+    "name": "Kotak Mahindra Bank",
+    "category": "Top 5 Market Leader",
+    "catalogueUrl": "https://www.kotak.com/en/personal-banking/cards/credit-cards.html",
+    "mitcUrl": "https://www.kotak.com/en/personal-banking/cards/credit-cards/service-charges-and-fees.html",
+    "noticeUrl": "https://www.kotak.com/en/personal-banking/cards/credit-cards/mitc.html",
+    "expectedCards": [
+      "Kotak White Reserve", "Kotak White", "Kotak Zen Signature", "Kotak Mojo Platinum",
+      "Kotak League Platinum", "Kotak IndianOil", "Kotak 811 #DreamDifferent", "Kotak Privy League Signature"
+    ]
+  },
+  {
+    "id": "indusind-bank",
+    "name": "IndusInd Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://www.indusind.com/in/en/personal/cards/credit-cards.html",
+    "mitcUrl": "https://www.indusind.com/in/en/personal/cards/credit-cards/mitc.html",
+    "noticeUrl": "https://www.indusind.com/in/en/personal/cards/credit-cards/rates-and-charges.html",
+    "expectedCards": [
+      "IndusInd Legend", "IndusInd Tiger Credit Card", "IndusInd EazyDiner", 
+      "IndusInd Pinnacle", "IndusInd Platinum Aura Edge", "IndusInd Samman RuPay", "IndusInd Nexxt"
+    ]
+  },
+  {
+    "id": "idfc-first-bank",
+    "name": "IDFC FIRST Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://www.idfcfirstbank.com/credit-card",
+    "mitcUrl": "https://www.idfcfirstbank.com/credit-card/most-important-terms-and-conditions",
+    "noticeUrl": "https://www.idfcfirstbank.com/credit-card/service-charges",
+    "expectedCards": [
+      "FIRST Wealth", "FIRST Select", "FIRST Classic", "FIRST Millennia",
+      "Club Vistara IDFC FIRST", "HPCL FIRST Power Plus", "HPCL FIRST Power", "FIRST WOW",
+      "FIRST Ashva", "FIRST Mayura"
+    ]
+  },
+  {
+    "id": "federal-bank",
+    "name": "Federal Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://www.federalbank.co.in/credit-cards",
+    "mitcUrl": "https://www.federalbank.co.in/credit-cards-mitc",
+    "noticeUrl": "https://www.federalbank.co.in/important-announcements",
+    "expectedCards": [
+      "Federal Celesta", "Federal Imperio", "Federal Signet", "Scapia Federal", "Fi-Federal", "OneCard Federal"
+    ]
+  },
+  {
+    "id": "yes-bank",
+    "name": "YES Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://www.yesbank.in/personal-banking/yes-individual/cards/credit-cards",
+    "mitcUrl": "https://www.yesbank.in/personal-banking/yes-individual/cards/credit-cards/mitc",
+    "noticeUrl": "https://www.yesbank.in/personal-banking/yes-individual/cards/credit-cards/schedule-of-charges",
+    "expectedCards": [
+      "YES Marquee", "YES Reserv", "YES Elite", "YES ACE", "YES BYOC", "Kiwi YES Bank"
+    ]
+  },
+  {
+    "id": "rbl-bank",
+    "name": "RBL Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards",
+    "mitcUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/terms-and-conditions",
+    "noticeUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/schedule-of-charges",
+    "expectedCards": [
+      "RBL World Safari", "RBL ShopRite", "RBL Play Credit Card", "RBL Cookies",
+      "Bajaj Finserv RBL SuperCards", "RBL Insignia"
+    ]
+  },
+  {
+    "id": "south-indian-bank",
+    "name": "South Indian Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://www.southindianbank.com/content/personal-banking/credit-cards/39",
+    "mitcUrl": "https://www.southindianbank.com/content/credit-cards-terms",
+    "noticeUrl": "https://www.southindianbank.com/content/service-charges",
+    "expectedCards": ["SIB OneCard", "SIB RuPay Platinum", "SIB Visa Gold"]
+  },
+  {
+    "id": "csb-bank",
+    "name": "CSB Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://www.csb.co.in/credit-cards",
+    "mitcUrl": "https://www.csb.co.in/mitc",
+    "noticeUrl": "https://www.csb.co.in/schedule-of-charges",
+    "expectedCards": ["CSB OneCard", "Jupiter Edge CSB", "CSB RuPay Platinum"]
+  },
+  {
+    "id": "city-union-bank",
+    "name": "City Union Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://www.cityunionbank.com/credit-cards",
+    "mitcUrl": "https://www.cityunionbank.com/terms-and-conditions",
+    "noticeUrl": "https://www.cityunionbank.com/charges",
+    "expectedCards": ["CUB Dhi RuPay Credit Card", "CUB Gold", "CUB Titanium"]
+  },
+  {
+    "id": "karur-vysya-bank",
+    "name": "Karur Vysya Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://www.kvb.co.in/personal/cards/credit-card/",
+    "mitcUrl": "https://www.kvb.co.in/personal/service-charges/",
+    "noticeUrl": "https://www.kvb.co.in/personal/important-notices/",
+    "expectedCards": ["KVB RuPay Select", "KVB Platinum", "SBI KVB Co-brand"]
+  },
+  {
+    "id": "karnataka-bank",
+    "name": "Karnataka Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://karnatakabank.com/personal/cards/credit-cards",
+    "mitcUrl": "https://karnatakabank.com/personal/cards/credit-cards/mitc",
+    "noticeUrl": "https://karnatakabank.com/schedule-of-charges",
+    "expectedCards": ["Karnataka Bank RuPay Platinum", "Karnataka Bank SBI Card"]
+  },
+  {
+    "id": "bandhan-bank",
+    "name": "Bandhan Bank",
+    "category": "Private Sector Bank",
+    "catalogueUrl": "https://bandhanbank.com/personal-banking/cards/credit-cards",
+    "mitcUrl": "https://bandhanbank.com/personal-banking/cards/credit-cards/mitc",
+    "noticeUrl": "https://bandhanbank.com/service-charges",
+    "expectedCards": ["Bandhan Bank StanChart Co-brand", "Bandhan OneCard"]
+  },
+  {
+    "id": "bob-financial",
+    "name": "Bank of Baroda (BOB Financial)",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://www.bobfinancial.com/",
+    "mitcUrl": "https://www.bobfinancial.com/most-important-terms-and-conditions.jsp",
+    "noticeUrl": "https://www.bobfinancial.com/schedule-of-charges.jsp",
+    "expectedCards": ["BOB Eterna", "BOB Premier", "BOB Select", "BOB Easy", "BOB Varunah", "OneCard BOB", "BOB HPCL ENERGIE"]
+  },
+  {
+    "id": "pnb-card",
+    "name": "Punjab National Bank (PNB Cards)",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://pnbcard.in/",
+    "mitcUrl": "https://pnbcard.in/mitc.html",
+    "noticeUrl": "https://pnbcard.in/schedule-of-charges.html",
+    "expectedCards": ["PNB RuPay Select", "PNB RuPay Platinum", "PNB Millennial", "PNB Rakshak RuPay"]
+  },
+  {
+    "id": "canara-bank",
+    "name": "Canara Bank",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://canarabank.com/credit-card",
+    "mitcUrl": "https://canarabank.com/User_page.aspx?othlink=332",
+    "noticeUrl": "https://canarabank.com/service-charges",
+    "expectedCards": ["Canara RuPay Select", "Canara World Credit Card", "Canara Platinum"]
+  },
+  {
+    "id": "union-bank",
+    "name": "Union Bank of India",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://www.unionbankofindia.co.in/english/credit-card.aspx",
+    "mitcUrl": "https://www.unionbankofindia.co.in/english/credit-card-mitc.aspx",
+    "noticeUrl": "https://www.unionbankofindia.co.in/english/service-charges.aspx",
+    "expectedCards": ["Union Uni-Carbon RuPay", "Union RuPay Select", "Union Signature"]
+  },
+  {
+    "id": "bank-of-india",
+    "name": "Bank of India",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://bankofindia.co.in/credit-card",
+    "mitcUrl": "https://bankofindia.co.in/service-charges",
+    "noticeUrl": "https://bankofindia.co.in/important-notices",
+    "expectedCards": ["BOI RuPay Select", "BOI Swarna", "BOI Platinum"]
+  },
+  {
+    "id": "indian-bank",
+    "name": "Indian Bank",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://www.indianbank.in/departments/credit-cards/",
+    "mitcUrl": "https://www.indianbank.in/departments/credit-card-mitc/",
+    "noticeUrl": "https://www.indianbank.in/schedule-of-charges/",
+    "expectedCards": ["Indian Bank RuPay Platinum", "Indian Bank Visa Signature", "OneCard Indian Bank"]
+  },
+  {
+    "id": "central-bank",
+    "name": "Central Bank of India",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://centralbankofindia.co.in/en/credit-card",
+    "mitcUrl": "https://centralbankofindia.co.in/en/credit-card-terms",
+    "noticeUrl": "https://centralbankofindia.co.in/en/service-charges",
+    "expectedCards": ["Central Bank RuPay Select", "Central Bank Platinum", "Central Bank Aspire"]
+  },
+  {
+    "id": "iob",
+    "name": "Indian Overseas Bank",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://www.iob.in/Credit-Cards",
+    "mitcUrl": "https://www.iob.in/Credit-Card-Charges",
+    "noticeUrl": "https://www.iob.in/Notices",
+    "expectedCards": ["IOB RuPay Classic", "IOB Platinum", "IOB Gold"]
+  },
+  {
+    "id": "uco-bank",
+    "name": "UCO Bank",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://www.ucobank.com/english/credit-card.aspx",
+    "mitcUrl": "https://www.ucobank.com/english/terms-credit-card.aspx",
+    "noticeUrl": "https://www.ucobank.com/english/charges.aspx",
+    "expectedCards": ["UCO RuPay Select", "UCO RuPay Platinum"]
+  },
+  {
+    "id": "bank-of-maharashtra",
+    "name": "Bank of Maharashtra",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://bankofmaharashtra.in/credit-cards",
+    "mitcUrl": "https://bankofmaharashtra.in/credit-card-mitc",
+    "noticeUrl": "https://bankofmaharashtra.in/service-charges",
+    "expectedCards": ["MahaBank RuPay Platinum", "MahaBank RuPay Classic"]
+  },
+  {
+    "id": "punjab-and-sind-bank",
+    "name": "Punjab & Sind Bank",
+    "category": "Public Sector Bank",
+    "catalogueUrl": "https://punjabandsindbank.co.in/content/creditcards",
+    "mitcUrl": "https://punjabandsindbank.co.in/content/terms",
+    "noticeUrl": "https://punjabandsindbank.co.in/content/charges",
+    "expectedCards": ["PSB RuPay Platinum", "PSB RuPay Gold"]
+  },
+  {
+    "id": "american-express",
+    "name": "American Express India",
+    "category": "Foreign Bank",
+    "catalogueUrl": "https://www.americanexpress.com/in/credit-cards/all-cards/",
+    "mitcUrl": "https://www.americanexpress.com/in/legal-disclosures/most-important-terms-and-conditions.html",
+    "noticeUrl": "https://www.americanexpress.com/in/legal-disclosures/important-information.html",
+    "expectedCards": [
+      "Amex Platinum Card", "Amex Platinum Travel", "Amex Gold Card", "Amex SmartEarn", "Amex MRCC"
+    ]
+  },
+  {
+    "id": "standard-chartered",
+    "name": "Standard Chartered Bank India",
+    "category": "Foreign Bank",
+    "catalogueUrl": "https://www.sc.com/in/credit-cards/",
+    "mitcUrl": "https://www.sc.com/in/credit-cards/most-important-terms-and-conditions/",
+    "noticeUrl": "https://www.sc.com/in/important-information/",
+    "expectedCards": [
+      "Standard Chartered Ultimate", "Standard Chartered EaseMyTrip", "Standard Chartered Rewards",
+      "Standard Chartered Smart", "Standard Chartered Platinum Elite"
+    ]
+  },
+  {
+    "id": "hsbc-india",
+    "name": "HSBC Bank India",
+    "category": "Foreign Bank",
+    "catalogueUrl": "https://www.hsbc.co.in/credit-cards/",
+    "mitcUrl": "https://www.hsbc.co.in/credit-cards/terms-and-conditions/",
+    "noticeUrl": "https://www.hsbc.co.in/credit-cards/notices/",
+    "expectedCards": [
+      "HSBC Premier Metal", "HSBC Live+ (Cashback)", "HSBC Platinum Credit Card"
+    ]
+  },
+  {
+    "id": "dbs-bank",
+    "name": "DBS Bank India",
+    "category": "Foreign Bank",
+    "catalogueUrl": "https://www.dbs.com/in/personal/cards/credit-cards",
+    "mitcUrl": "https://www.dbs.com/in/personal/cards/credit-cards/terms-and-conditions",
+    "noticeUrl": "https://www.dbs.com/in/personal/charges",
+    "expectedCards": [
+      "DBS Vantage", "DBS Spark", "Bajaj Finserv DBS 5X/10X SuperCard"
+    ]
+  },
+  {
+    "id": "sbm-bank",
+    "name": "SBM Bank India",
+    "category": "Foreign Bank",
+    "catalogueUrl": "https://www.sbmbank.co.in/personal-banking/cards/credit-cards.php",
+    "mitcUrl": "https://www.sbmbank.co.in/personal-banking/terms-and-conditions.php",
+    "noticeUrl": "https://www.sbmbank.co.in/personal-banking/service-charges.php",
+    "expectedCards": ["OneCard SBM", "Uni SBM", "Gild Secured Credit Card"]
+  },
+  {
+    "id": "au-small-finance-bank",
+    "name": "AU Small Finance Bank",
+    "category": "Small Finance Bank",
+    "catalogueUrl": "https://www.aubank.in/personal-banking/credit-cards",
+    "mitcUrl": "https://www.aubank.in/personal-banking/credit-cards/mitc",
+    "noticeUrl": "https://www.aubank.in/important-updates",
+    "expectedCards": [
+      "AU Zenith+ Metal", "AU Zenith", "AU Vetta", "AU Altura Plus", "AU Altura", "ixigo AU Credit Card", "AU LIT"
+    ]
+  },
+  {
+    "id": "equitas-small-finance-bank",
+    "name": "Equitas Small Finance Bank",
+    "category": "Small Finance Bank",
+    "catalogueUrl": "https://www.equitasbank.com/personal-banking/cards/credit-card",
+    "mitcUrl": "https://www.equitasbank.com/personal-banking/cards/credit-card/mitc",
+    "noticeUrl": "https://www.equitasbank.com/schedule-of-charges",
+    "expectedCards": ["Equitas Elegance", "Equitas Enchante", "Equitas Excite"]
+  },
+  {
+    "id": "ujjivan-small-finance-bank",
+    "name": "Ujjivan Small Finance Bank",
+    "category": "Small Finance Bank",
+    "catalogueUrl": "https://www.ujjivansfb.in/credit-card",
+    "mitcUrl": "https://www.ujjivansfb.in/credit-card-mitc",
+    "noticeUrl": "https://www.ujjivansfb.in/schedule-of-charges",
+    "expectedCards": ["Ujjivan RuPay Platinum", "Ujjivan RuPay Gold"]
+  },
+  {
+    "id": "jana-small-finance-bank",
+    "name": "Jana Small Finance Bank",
+    "category": "Small Finance Bank",
+    "catalogueUrl": "https://www.janabank.com/cards/credit-card/",
+    "mitcUrl": "https://www.janabank.com/terms-conditions/",
+    "noticeUrl": "https://www.janabank.com/charges",
+    "expectedCards": ["Jana RuPay Credit Card"]
+  },
+  {
+    "id": "utkarsh-small-finance-bank",
+    "name": "Utkarsh Small Finance Bank",
+    "category": "Small Finance Bank",
+    "catalogueUrl": "https://www.utkarsh.bank/personal-banking/cards/credit-card",
+    "mitcUrl": "https://www.utkarsh.bank/personal-banking/cards/credit-card",
+    "noticeUrl": "https://www.utkarsh.bank/charges",
+    "expectedCards": ["Utkarsh RuPay Platinum"]
+  },
+  {
+    "id": "onecard-fpl",
+    "name": "OneCard (FPL Technologies)",
+    "category": "Fintech Co-Brand",
+    "catalogueUrl": "https://www.getonecard.app/",
+    "mitcUrl": "https://www.getonecard.app/legal/mitc/",
+    "noticeUrl": "https://www.getonecard.app/legal/mitc/",
+    "expectedCards": ["OneCard Metal (LTF)", "OneCard Secured"]
+  },
+  {
+    "id": "scapia",
+    "name": "Scapia",
+    "category": "Fintech Co-Brand",
+    "catalogueUrl": "https://www.scapia.cards/",
+    "mitcUrl": "https://www.scapia.cards/terms-and-conditions",
+    "noticeUrl": "https://www.scapia.cards/terms-and-conditions",
+    "expectedCards": ["Scapia Federal Credit Card (Zero Forex, LTF)"]
+  },
+  {
+    "id": "kiwi",
+    "name": "Kiwi UPI Cards",
+    "category": "Fintech Co-Brand",
+    "catalogueUrl": "https://gokiwi.in/",
+    "mitcUrl": "https://gokiwi.in/terms-and-conditions",
+    "noticeUrl": "https://gokiwi.in/terms-and-conditions",
+    "expectedCards": ["Kiwi Virtual RuPay Credit Card on UPI"]
+  },
+  {
+    "id": "fi-money",
+    "name": "Fi Money",
+    "category": "Fintech Co-Brand",
+    "catalogueUrl": "https://fi.money/credit-card",
+    "mitcUrl": "https://fi.money/terms-and-conditions",
+    "noticeUrl": "https://fi.money/terms-and-conditions",
+    "expectedCards": ["Fi-Federal Credit Card"]
+  },
+  {
+    "id": "jupiter",
+    "name": "Jupiter",
+    "category": "Fintech Co-Brand",
+    "catalogueUrl": "https://jupiter.money/credit-card/",
+    "mitcUrl": "https://jupiter.money/terms/",
+    "noticeUrl": "https://jupiter.money/terms/",
+    "expectedCards": ["Jupiter Edge CSB RuPay Card"]
+  },
+  {
+    "id": "uni-cards",
+    "name": "Uni Cards",
+    "category": "Fintech Co-Brand",
+    "catalogueUrl": "https://www.uni.cards/",
+    "mitcUrl": "https://www.uni.cards/terms",
+    "noticeUrl": "https://www.uni.cards/terms",
+    "expectedCards": ["Uni NX Wave Credit Card", "Uni Paychek"]
+  }
+]

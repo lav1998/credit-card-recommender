@@ -92,24 +92,24 @@ export default function Home() {
         )}
       </main>
 
-      {/* Floating Compare Drawer Pill (appears when 1 or more cards selected) */}
+      {/* Floating Compare Drawer Pill */}
       {comparedCardIds.length > 0 && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 backdrop-blur-md border border-amber-500/50 shadow-2xl rounded-full px-5 py-3 flex items-center space-x-4 animate-in slide-in-from-bottom duration-300">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 backdrop-blur-md border border-slate-700 shadow-xl rounded-full px-4 py-2 flex items-center space-x-3 animate-in slide-in-from-bottom duration-200">
           <div className="flex items-center space-x-2">
-            <span className="w-6 h-6 rounded-full bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center">
+            <span className="w-5 h-5 rounded-full bg-amber-400 text-slate-950 font-mono font-bold text-[10px] flex items-center justify-center">
               {comparedCardIds.length}
             </span>
-            <span className="text-xs font-semibold text-white hidden sm:inline">
-              Cards Selected for Comparison
+            <span className="text-xs font-medium text-slate-200 hidden sm:inline">
+              Selected
             </span>
           </div>
 
           <button
             onClick={() => setIsCompareModalOpen(true)}
-            className="px-4 py-1.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs shadow-md transition-all flex items-center space-x-1.5"
+            className="px-3.5 py-1 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold text-xs shadow-sm transition-all flex items-center space-x-1.5"
           >
             <GitCompare className="w-3.5 h-3.5" />
-            <span>Compare Now</span>
+            <span>Compare</span>
           </button>
 
           <button
@@ -138,19 +138,20 @@ export default function Home() {
         onClearAll={handleClearCompare}
       />
 
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/90 text-slate-500 text-xs py-8 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      {/* Editorial Footer */}
+      <footer className="border-t border-slate-800/80 bg-slate-950/80 text-slate-500 text-xs py-8 mt-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-2">
-            <span className="font-bold text-slate-300">CardSmart.in</span>
-            <span>— India&apos;s Smart Credit Card & LTF Recommender Platform</span>
+            <span className="font-semibold text-slate-300">CardSmart India</span>
+            <span className="text-slate-600">/</span>
+            <span>Independent Credit Card Intelligence</span>
           </div>
-          <div className="flex items-center space-x-4 text-[11px]">
-            <span>Spend Analytics Engine</span>
-            <span>•</span>
-            <span>Alumni Program Rules</span>
-            <span>•</span>
-            <span>Fee Waiver Tracker</span>
+          <div className="flex items-center space-x-3 text-[11px] font-mono text-slate-400">
+            <span>Spend Analytics</span>
+            <span>·</span>
+            <span>Alumni Waivers</span>
+            <span>·</span>
+            <span>MITC Registry</span>
           </div>
         </div>
       </footer>
