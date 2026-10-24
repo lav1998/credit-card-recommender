@@ -1,5 +1,24 @@
 import { CreditCard, UserSpendProfile, CardRecommendationResult } from '../types/card';
 
+// Helper to check if bank names match
+function doesBankMatch(cardBank: string, targetBank: string): boolean {
+  const cb = cardBank.toLowerCase();
+  const tb = targetBank.toLowerCase();
+  if (cb.includes(tb) || tb.includes(cb)) return true;
+  if ((cb.includes('hdfc') && tb.includes('hdfc')) ||
+      (cb.includes('sbi') && (tb.includes('sbi') || tb.includes('state bank'))) ||
+      (cb.includes('icici') && tb.includes('icici')) ||
+      (cb.includes('axis') && tb.includes('axis')) ||
+      (cb.includes('idfc') && tb.includes('idfc')) ||
+      (cb.includes('standard chartered') && tb.includes('scb')) ||
+      (cb.includes('hsbc') && tb.includes('hsbc')) ||
+      (cb.includes('indusind') && tb.includes('indusind')) ||
+      (cb.includes('au small') && tb.includes('au'))) {
+    return true;
+  }
+  return false;
+}
+
 export function calculateCardValue(
   card: CreditCard,
   profile: UserSpendProfile
@@ -35,7 +54,6 @@ export function calculateCardValue(
   if (card.rewards.fuelPercent) {
     fuelRewards = annualFuel * (card.rewards.fuelPercent / 100);
   } else if (card.perks.fuelSurchargeWaiver && annualFuel > 0) {
-    // Standard 1% fuel surcharge waiver up to Rs. 250/mo = Rs 3000/yr
     fuelRewards = Math.min(annualFuel * 0.01, 3000);
   } else {
     fuelRewards = annualFuel * baseRate;
@@ -45,7 +63,6 @@ export function calculateCardValue(
   const onlineRate = card.rewards.onlineShoppingPercent ? card.rewards.onlineShoppingPercent / 100 : baseRate;
   let onlineRewards = annualOnline * onlineRate;
   if (card.rewards.monthlyCashbackCap && card.primaryCategory === 'Cashback') {
-    // If there's a monthly cashback cap (e.g. SBI Cashback Rs. 5000/mo, Swiggy Rs. 1500/mo)
     const annualCap = card.rewards.monthlyCashbackCap * 12;
     if (onlineRewards > annualCap) {
       onlineRewards = annualCap;
@@ -66,7 +83,7 @@ export function calculateCardValue(
 
   // RuPay UPI rewards
   const upiRate = card.rewards.upiPercent ? card.rewards.upiPercent / 100 : (card.network === 'RuPay' ? baseRate : 0);
-  const upiRewards = annualUpi * upiRate;
+  let upiRewards = annualUpi * upiRate;
 
   // Offline / general rewards
   const offlineRewards = annualOffline * baseRate;
@@ -93,7 +110,6 @@ export function calculateCardValue(
   }
 
   // 3. Lounge Valuation
-  // Estimated economic value: Domestic lounge = Rs. 1,000, International = Rs. 2,000
   let loungeValue = 0;
   if (profile.travelLoungeVisitsPerYear > 0 && card.perks.domesticLoungesPerQuarter) {
     const maxDomesticAnnual =
@@ -116,7 +132,39 @@ export function calculateCardValue(
   // 4. Welcome Bonus (amortized over year 1)
   const welcomeBonusValue = card.welcomeOffer?.estimatedValueInRupees || 0;
 
-  // 5. Fee Waiver & LTF Evaluation
+  // 5. Bank Relationship Evaluation
+  const relationshipSynergies: string[] = [];
+  let salaryAccountMatch = false;
+  let savingsAccountMatch = false;
+
+  const userAccounts = profile.bankAccounts || [];
+  for (const acc of userAccounts) {
+    if (doesBankMatch(card.bank, acc.bank)) {
+      if (acc.accountType === 'Salary Account') {
+        salaryAccountMatch = true;
+        relationshipSynergies.push(
+          `Direct synergy with your ${acc.bank} Salary Account: High approval odds, pre-approved limit enhancements, and corporate tie-up eligibility.`
+        );
+      } else if (acc.accountType === 'Savings Account') {
+        savingsAccountMatch = true;
+        relationshipSynergies.push(
+          `Backed by your ${acc.bank} Savings Account: Pre-approved offers via NetBanking/App with minimal documentation.`
+        );
+      } else if (acc.accountType === 'Wealth / Priority Account') {
+        salaryAccountMatch = true;
+        relationshipSynergies.push(
+          `Privilege tier through your ${acc.bank} Wealth / Priority relationship: Eligible for premium card waivers and RM escalation.`
+        );
+      }
+    }
+  }
+
+  // Fallback for legacy salaryBank string
+  if (!salaryAccountMatch && profile.salaryBank && doesBankMatch(card.bank, profile.salaryBank)) {
+    salaryAccountMatch = true;
+  }
+
+  // 6. Fee Waiver & LTF Evaluation
   let feeWaived = false;
   let ltfStatusForUser: CardRecommendationResult['ltfStatusForUser'] = 'Paid (Fee Deducted)';
   let effectiveAnnualFee = card.annualFee;
@@ -125,20 +173,11 @@ export function calculateCardValue(
     feeWaived = true;
     effectiveAnnualFee = 0;
     ltfStatusForUser = 'Free Forever (LTF)';
-  } else if (
-    profile.alumniInstitute &&
-    card.ltfPathways.alumniEligible
-  ) {
-    // User is alumnus of an eligible institution
+  } else if (profile.alumniInstitute && card.ltfPathways.alumniEligible) {
     feeWaived = true;
     effectiveAnnualFee = 0;
     ltfStatusForUser = 'Alumni LTF Eligible';
-  } else if (
-    profile.salaryBank &&
-    card.bank.toLowerCase().includes(profile.salaryBank.toLowerCase()) &&
-    card.ltfPathways.salaryTierRequired
-  ) {
-    // User's salary account is with the card issuing bank
+  } else if (salaryAccountMatch && card.ltfPathways.salaryTierRequired) {
     feeWaived = true;
     effectiveAnnualFee = 0;
     ltfStatusForUser = 'Salary Account LTF Eligible';
@@ -146,13 +185,12 @@ export function calculateCardValue(
     card.ltfPathways.spendWaiverAmount &&
     totalAnnualSpend >= card.ltfPathways.spendWaiverAmount
   ) {
-    // Met the annual spend waiver threshold
     feeWaived = true;
     effectiveAnnualFee = 0;
     ltfStatusForUser = 'Fee Waived via Spends';
   }
 
-  // 6. Net Annual Value & ROI Calculation
+  // 7. Net Annual Value & ROI Calculation
   const netAnnualValue = Math.round(
     grossAnnualRewards + milestoneBonusValue + loungeValue + welcomeBonusValue - effectiveAnnualFee
   );
@@ -161,7 +199,63 @@ export function calculateCardValue(
     ? Number(((netAnnualValue / totalAnnualSpend) * 100).toFixed(2))
     : 0;
 
-  // 7. Dynamic Fit Reasons & Caution Flags
+  // 8. Existing Card Synergy & Upgrade Pathways
+  const existingCardSynergies: string[] = [];
+  let isUpgradePath = false;
+  let upgradeDetails: string | undefined = undefined;
+  const isExistingCard = (profile.existingCardIds || []).includes(card.id);
+
+  const hasRegaliaGold = (profile.existingCardIds || []).includes('hdfc-regalia-gold');
+
+  if (hasRegaliaGold) {
+    if (card.id === 'hdfc-infinia-metal') {
+      isUpgradePath = true;
+      upgradeDetails =
+        'Direct upgrade path from your Regalia Gold: Reach ₹7.5L+ credit limit on Regalia Gold and ₹7.5L+ spends in 6 months, then email priorityredressal.creditcards@hdfcbank.com with your HDFC Salary slips.';
+      existingCardSynergies.push(
+        'Ultimate upgrade from Regalia Gold: jumps rewards from 1.33% to 33.3% on SmartBuy and adds unlimited Priority Pass for add-ons.'
+      );
+    } else if (card.id === 'hdfc-dcb-metal') {
+      isUpgradePath = true;
+      upgradeDetails =
+        'Upgrade path from Regalia Gold: Qualify with ₹5L+ limit on Regalia Gold or 100% LTF via the HDFC Alumni program (IIT/IIM/BITS/XLRI).';
+      existingCardSynergies.push(
+        'Substantial upgrade from Regalia Gold: same 33.3% SmartBuy travel power as Infinia with lower fee waiver threshold.'
+      );
+    } else if (card.id === 'sbi-cashback') {
+      existingCardSynergies.push(
+        'Fills Regalia Gold\'s biggest weakness: gives flat 5% monthly statement cashback on online shopping (where Regalia Gold gives only ~1.33%).'
+      );
+      if (savingsAccountMatch) {
+        existingCardSynergies.push('Fast-track approval via your existing SBI Savings Account.');
+      }
+    } else if (card.id === 'tata-neu-infinity') {
+      existingCardSynergies.push(
+        'RuPay UPI powerhouse: links to UPI QR codes for 1.5% cashback (which Regalia Gold on Visa/Mastercard cannot do).'
+      );
+      existingCardSynergies.push(
+        'As an existing HDFC customer with a salary account, you can request this as a shared-limit virtual floater card with zero additional CIBIL hit!'
+      );
+    } else if (card.id === 'swiggy-hdfc') {
+      existingCardSynergies.push(
+        '10% direct statement cashback on Swiggy & Instamart + 5% on top ecommerce apps. Can be issued as a companion floater card with HDFC.'
+      );
+    } else if (card.id === 'airtel-axis') {
+      existingCardSynergies.push(
+        'Complements Regalia Gold with 25% cashback on electricity/Wi-Fi/mobile recharge and 10% on Zomato/Swiggy/BigBasket.'
+      );
+    } else if (card.id === 'hsbc-live-plus') {
+      existingCardSynergies.push(
+        'Provides 10% flat cashback on offline dining and all grocery stores where Regalia Gold returns standard 1.33%.'
+      );
+    } else if (card.id === 'amazon-pay-icici') {
+      existingCardSynergies.push(
+        'True Lifetime Free companion for uncapped 5% Amazon shopping without paying any annual renewal fee.'
+      );
+    }
+  }
+
+  // 9. Dynamic Fit Reasons & Caution Flags
   const fitReasons: string[] = [];
   const cautions: string[] = [];
 
@@ -177,7 +271,9 @@ export function calculateCardValue(
     }
   } else if (card.ltfPathways.spendWaiverAmount) {
     const deficit = card.ltfPathways.spendWaiverAmount - totalAnnualSpend;
-    cautions.push(`Annual fee ₹${card.annualFee.toLocaleString('en-IN')} applies; spending ₹${deficit.toLocaleString('en-IN')} more will waive the fee`);
+    if (deficit > 0) {
+      cautions.push(`Annual fee ₹${card.annualFee.toLocaleString('en-IN')} applies; spending ₹${deficit.toLocaleString('en-IN')} more will waive the fee`);
+    }
   }
 
   if (card.rewards.onlineShoppingPercent && card.rewards.onlineShoppingPercent >= 5 && annualOnline > 0) {
@@ -241,6 +337,11 @@ export function calculateCardValue(
     ltfStatusForUser,
     fitReasons,
     cautions,
+    relationshipSynergies,
+    existingCardSynergies,
+    isUpgradePath,
+    upgradeDetails,
+    isExistingCard,
   };
 }
 
@@ -252,30 +353,48 @@ export function rankCardsForUser(
 
   // If user strictly requested LTF only
   if (profile.prefersLtfOnly) {
-    filtered = filtered.filter(
-      (c) =>
+    filtered = filtered.filter((c) => {
+      const isBankSalaryMatch = (profile.bankAccounts || []).some(
+        (a) => a.accountType === 'Salary Account' && doesBankMatch(c.bank, a.bank)
+      );
+      const isLegacySalaryMatch = profile.salaryBank && doesBankMatch(c.bank, profile.salaryBank);
+      
+      const totalSpend =
+        (profile.monthlyTravel +
+          profile.monthlyFuel +
+          profile.monthlyOnlineShopping +
+          profile.monthlyDining +
+          profile.monthlyGroceries +
+          profile.monthlyUtilities +
+          profile.monthlyUpi +
+          profile.monthlyOfflineOther) *
+        12;
+
+      return (
         c.ltfPathways.isInherentlyLtf ||
         (profile.alumniInstitute && c.ltfPathways.alumniEligible) ||
-        (profile.salaryBank && c.bank.toLowerCase().includes(profile.salaryBank.toLowerCase()) && c.ltfPathways.salaryTierRequired) ||
-        (c.ltfPathways.spendWaiverAmount &&
-          (profile.monthlyTravel +
-            profile.monthlyFuel +
-            profile.monthlyOnlineShopping +
-            profile.monthlyDining +
-            profile.monthlyGroceries +
-            profile.monthlyUtilities +
-            profile.monthlyUpi +
-            profile.monthlyOfflineOther) *
-            12 >=
-            c.ltfPathways.spendWaiverAmount)
-    );
+        ((isBankSalaryMatch || isLegacySalaryMatch) && c.ltfPathways.salaryTierRequired) ||
+        (c.ltfPathways.spendWaiverAmount && totalSpend >= c.ltfPathways.spendWaiverAmount)
+      );
+    });
   }
 
   // Calculate scores for all cards
   const results = filtered.map((c) => calculateCardValue(c, profile));
 
-  // Sort primarily by Net Annual Value descending
-  results.sort((a, b) => b.netAnnualValue - a.netAnnualValue);
+  // Sort primarily by Net Annual Value descending, but give slight boost to high-synergy / non-redundant cards
+  results.sort((a, b) => {
+    // If one is already owned, put it slightly lower so new recommendations take priority unless user explicitly checks it
+    if (a.isExistingCard && !b.isExistingCard) return 1;
+    if (!a.isExistingCard && b.isExistingCard) return -1;
+
+    // Upgrades or high synergies get elevated
+    const aBonus = (a.relationshipSynergies.length > 0 ? 500 : 0) + (a.isUpgradePath ? 1000 : 0);
+    const bBonus = (b.relationshipSynergies.length > 0 ? 500 : 0) + (b.isUpgradePath ? 1000 : 0);
+
+    return (b.netAnnualValue + bBonus) - (a.netAnnualValue + aBonus);
+  });
 
   return results;
 }
+

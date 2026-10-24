@@ -10,6 +10,8 @@ export type CardCategory =
   | 'Premium / Luxury'
   | 'Zero Forex';
 
+export type CardTier = 'S-Tier' | 'A-Tier' | 'B-Tier' | 'C-Tier';
+
 export type LtfType = 
   | 'Inherently LTF' // Completely free forever with no condition
   | 'Spend Waiver'   // Free if spend threshold achieved
@@ -60,6 +62,7 @@ export interface CreditCard {
   id: string;
   name: string;
   bank: string;
+  tier?: CardTier;
   imageUrl?: string;
   network: CardNetwork;
   primaryCategory: CardCategory;
@@ -86,9 +89,26 @@ export interface CreditCard {
   
   // Editorial analysis
   highlight: string;
+  standoutFeature?: string; // What makes it stand out in 1-2 punchy sentences
   pros: string[];
   cons: string[];
   applyUrl?: string;
+
+  // Synergy & Upgrade paths
+  upgradeFromCardIds?: string[]; // e.g., ['hdfc-regalia-gold', 'hdfc-millennia']
+  upgradeDetails?: string;
+  bankSynergyNotes?: string;
+}
+
+export type BankAccountType = 
+  | 'Salary Account' 
+  | 'Savings Account' 
+  | 'Wealth / Priority Account' 
+  | 'Current Account';
+
+export interface UserBankAccount {
+  bank: string; // e.g. 'HDFC Bank', 'State Bank of India (SBI)', 'ICICI Bank', 'Axis Bank'
+  accountType: BankAccountType;
 }
 
 export interface UserSpendProfile {
@@ -103,12 +123,16 @@ export interface UserSpendProfile {
   
   // Preferences
   prefersLtfOnly: boolean;
-  primaryPreference: 'Maximum Cashback' | 'Travel & Lounges' | 'Fuel Savings' | 'RuPay UPI' | 'All-Rounder';
+  primaryPreference: 'Maximum Cashback' | 'Travel & Lounges' | 'Fuel Savings' | 'RuPay UPI' | 'All-Rounder' | 'Zero Forex';
   travelLoungeVisitsPerYear: number;
   internationalTravelPerYear: number;
   userAnnualIncome: number;
   alumniInstitute?: string;
   salaryBank?: string;
+
+  // Bank Relationship & Existing Cards
+  bankAccounts: UserBankAccount[];
+  existingCardIds: string[];
 }
 
 export interface CardRecommendationResult {
@@ -135,4 +159,12 @@ export interface CardRecommendationResult {
   ltfStatusForUser: 'Free Forever (LTF)' | 'Fee Waived via Spends' | 'Alumni LTF Eligible' | 'Salary Account LTF Eligible' | 'Paid (Fee Deducted)';
   fitReasons: string[];
   cautions: string[];
+  
+  // Bank Relationship & Portfolio Synergy
+  relationshipSynergies: string[];
+  existingCardSynergies: string[];
+  isUpgradePath: boolean;
+  upgradeDetails?: string;
+  isExistingCard: boolean;
 }
+

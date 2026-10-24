@@ -1,7 +1,16 @@
 'use client';
 
-import React from 'react';
-import { CreditCard, Sparkles, Gift, Layers, Compass, GitCompare, GraduationCap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { 
+  CreditCard, 
+  Sparkles, 
+  Gift, 
+  Layers, 
+  Compass, 
+  GitCompare, 
+  Sun, 
+  Moon 
+} from 'lucide-react';
 
 interface NavbarProps {
   activeTab: 'recommender' | 'ltf-hub' | 'categories' | 'catalog';
@@ -16,8 +25,38 @@ export const Navbar: React.FC<NavbarProps> = ({
   comparisonCount,
   onOpenComparison,
 }) => {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  // Load saved theme from localStorage on initial mount
+  useEffect(() => {
+    const saved = localStorage.getItem('cardsmart-theme') as 'dark' | 'light' | null;
+    if (saved === 'light') {
+      setTheme('light');
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+    } else {
+      setTheme('dark');
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    localStorage.setItem('cardsmart-theme', nextTheme);
+
+    if (nextTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+    }
+  };
+
   return (
-    <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white">
+    <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -92,8 +131,29 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </nav>
 
-          {/* Right Action: Comparison Drawer Button */}
-          <div className="flex items-center space-x-3">
+          {/* Right Action: Light/Dark Mode Switch & Comparison Drawer */}
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            {/* Light / Dark Mode Toggle Switch */}
+            <button
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
+              title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
+              className="flex items-center space-x-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700/80 text-slate-200 border border-slate-700 hover:border-slate-600 transition-all shadow-sm"
+            >
+              {theme === 'dark' ? (
+                <>
+                  <Sun className="w-4 h-4 text-amber-400 transition-transform duration-200 hover:rotate-45" />
+                  <span className="text-xs font-semibold hidden sm:inline text-slate-300">Light</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-4 h-4 text-indigo-400 transition-transform duration-200 -rotate-12" />
+                  <span className="text-xs font-semibold hidden sm:inline text-slate-700">Dark</span>
+                </>
+              )}
+            </button>
+
+            {/* Comparison Button */}
             <button
               onClick={onOpenComparison}
               className={`relative flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${

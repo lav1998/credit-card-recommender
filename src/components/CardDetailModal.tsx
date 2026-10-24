@@ -65,10 +65,22 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
         {/* Modal Body */}
         <div className="p-6 sm:p-8 space-y-6 max-h-[80vh] overflow-y-auto">
           {/* Card Title & Highlight */}
-          <div>
+          <div className="space-y-3">
             <h2 className="text-2xl sm:text-3xl font-black text-white">{card.name}</h2>
-            <p className="mt-2 text-slate-300 text-sm leading-relaxed">{card.highlight}</p>
+            
+            {/* Standout Feature Callout */}
+            <div className="p-3.5 rounded-xl bg-gradient-to-r from-amber-500/15 via-orange-500/10 to-slate-900 border-l-4 border-amber-400">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 block mb-0.5">
+                🌟 What Makes It Stand Out
+              </span>
+              <p className="text-sm font-semibold text-slate-100 leading-relaxed">
+                {card.standoutFeature || card.highlight}
+              </p>
+            </div>
+
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">{card.highlight}</p>
           </div>
+
 
           {/* Pricing & Fee Waiver Card */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-slate-950/60 border border-slate-800">

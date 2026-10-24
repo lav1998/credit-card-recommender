@@ -130,6 +130,50 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                     ))}
                   </tr>
 
+                  {/* What Makes It Stand Out */}
+                  <tr className="bg-amber-500/5">
+                    <td className="py-3 px-3 font-bold text-amber-400">What Makes It Stand Out</td>
+                    {cards.map((c) => (
+                      <td key={c.id} className="py-3 px-4 font-medium text-slate-200">
+                        {c.standoutFeature || c.highlight}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* Key Pros */}
+                  <tr>
+                    <td className="py-3 px-3 font-semibold text-emerald-400">Key Pros</td>
+                    {cards.map((c) => (
+                      <td key={c.id} className="py-3 px-4 align-top">
+                        <ul className="space-y-1">
+                          {c.pros.slice(0, 3).map((p, idx) => (
+                            <li key={idx} className="text-slate-300 flex items-start text-[11px]">
+                              <span className="text-emerald-400 mr-1 shrink-0">✓</span>
+                              <span>{p}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* Cons & Caveats */}
+                  <tr>
+                    <td className="py-3 px-3 font-semibold text-amber-400">Cons & Caveats</td>
+                    {cards.map((c) => (
+                      <td key={c.id} className="py-3 px-4 align-top">
+                        <ul className="space-y-1">
+                          {c.cons.slice(0, 2).map((con, idx) => (
+                            <li key={idx} className="text-slate-400 flex items-start text-[11px]">
+                              <span className="text-amber-400 mr-1 shrink-0">⚠️</span>
+                              <span>{con}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    ))}
+                  </tr>
+
                   {/* Primary Category */}
                   <tr>
                     <td className="py-3 px-3 font-semibold text-slate-400">Primary Strength</td>
@@ -139,6 +183,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                       </td>
                     ))}
                   </tr>
+
 
                   {/* Base Reward Rate */}
                   <tr>
